@@ -1,12 +1,12 @@
 # Golang simple task Runner for RabbitMQ
 
-Created for personal use only (not common solution). What does it do:
-* Load local configuration file (config.json)
-* Based on local configuration request remote configuration:
-    * send current runtime information (memory, cpu, network settings collected by [runner-info](https://github.com/krustnic/runtime-info.git))
-    * receive additional settings for current machine (number of workers and RabbitMQ connection information)    
-* Run workers
-* Connect to RabbitMQ server
+Created for personal use only (not common solution). What it does:
+* Loads local configuration file (config.json)
+* Based on local configuration requests remote configuration:
+    * sends current runtime information (memory, cpu, network settings collected by [runner-info](https://github.com/krustnic/runtime-info.git))
+    * receivse additional settings for current machine (number of workers and RabbitMQ connection information)    
+* Runs workers
+* Connects to RabbitMQ server
 * On each new task (JSON message) pushed to queue run job on available worker
 
 To achieve needed functionality `job` package should be rewriten
