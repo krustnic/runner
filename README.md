@@ -1,6 +1,6 @@
-# Golang simple task Runner for RabbitMQ
+# Golang simple task Runner example for RabbitMQ
 
-Created for personal use only (not common solution). What it does:
+___Created for personal use only (not common solution).___ What it does:
 * Loads local configuration file (config.json)
 * Based on local configuration requests remote configuration:
     * sends current runtime information (memory, cpu, network settings collected by [runner-info](https://github.com/krustnic/runtime-info.git))
