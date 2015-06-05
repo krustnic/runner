@@ -24,13 +24,20 @@ type LocalConfig struct {
 }
 
 var Config *LocalConfig
+var localConfigPath = getExecutablePath() + "/config.json"
 
 func init() {
     transport := &http.Transport{
         TLSClientConfig : &tls.Config{InsecureSkipVerify : true},
     }
     
-    client = &http.Client{ Transport : transport }  
+    client = &http.Client{ Transport : transport }
+
+    // Check for manually specified config file
+    if len( os.Args ) == 3 && os.Args[1] == "-c" {
+        localConfigPath = os.Args[2]
+    }
+    log.Printf("Local config file path: %s", localConfigPath )
     
     // Load local config
     config, err := LoadLocalConfig()
@@ -44,7 +51,7 @@ func init() {
 func LoadLocalConfig() (LocalConfig, error) {
     var localConfig = LocalConfig{}
     
-    configPath := getExecutablePath() + "/config.json"
+    configPath := localConfigPath
     
     log.Printf("Start loading local config file: %s", configPath)
     
